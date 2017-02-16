@@ -1,0 +1,5 @@
+config.jsonsession.db
+scratch
+config.json
+session.db
+node_modules/

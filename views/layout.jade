@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/vendors/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div.container-fluid
+      div.row
+        block content
+    script(src='/vendors/jquery/dist/jquery.min.js')
+    script(src='/vendors/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/javascripts/app.js')

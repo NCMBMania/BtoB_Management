@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  if !user
+    h1 ログイン
+    form(action='/sessions',method='post')
+      div.form-group
+        label(for='inputUserId') ユーザID
+        input.form-control(type='text',name='userId')
+      div.form-group
+        label(for='inputPassword') パスワード
+        input.form-control(type='password',name='password')
+      button.btn.btn-default(type='submit') ログイン
+  else
+    div= user.userName
+    p
+      form(action='/logout',method='post')
+        button.btn.btn-success ログアウト
