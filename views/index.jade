@@ -14,5 +14,6 @@ block content
   else
     div= user.userName
     p
+      a.btn.btn-info(href='/configs') 設定
       form(action='/logout',method='post')
         button.btn.btn-success ログアウト

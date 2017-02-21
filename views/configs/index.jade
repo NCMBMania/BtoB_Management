@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h1 設定画面
+  form(action='/configs',method='post')
+    div.form-group
+      label(for='inputAppName') アプリ名
+      input.form-control(type='text',name='appName',value=config.appName)
+    div.form-group
+      label(for='inputDescription') 概要
+      textarea.form-control(rows=10,cols=50,name='description')= config.description
+    div.checkbox
+      label
+        input(type='checkbox',name='public',checked=(config.public ? 'checked' : undefined))
+        公開
+    button.btn.btn-default(type='submit') 更新
+  
