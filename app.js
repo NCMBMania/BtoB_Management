@@ -8,11 +8,14 @@ let session = require('express-session')
 let NedbStore = require('connect-nedb-session')(session);
 let config = require('./config');
 
+const fileUpload = require('express-fileupload');
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var sessions = require('./routes/sessions');
 var configs = require('./routes/configs');
 var masters = require('./routes/masters');
+var files   = require('./routes/files');
 
 var app = express();
 
@@ -48,6 +51,9 @@ app.use('/users', users);
 app.use('/sessions', sessions);
 app.use('/configs', configs);
 app.use('/masters', masters);
+
+app.use(fileUpload());
+app.use('/files',  files);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

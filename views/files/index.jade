@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  h1 ファイル管理
+  form(action='/files',method='post',enctype='multipart/form-data')
+    div.form-group
+      label(for='inputAppName') ファイルを指定
+      input.form-control(type='file',name='photo')
+    button.btn.btn-default(type='submit') 登録
+  - for (i in files) {
+    - var file = files[i];
+    p
+      div.row
+        div.col-xs-9.col-md-offset-3
+          img.img-rounded(width='100%',src='https://mb.api.cloud.nifty.com/2013-09-01/applications/'+config.application_id+'/publicFiles/'+file.fileName)
+  - }
+  
