@@ -33,12 +33,22 @@ router.post('/', (req, res, next) => {
     .setRoleWriteAccess('Admin', true)
     .setPublicReadAccess(true);
   ncmb.File.upload(`${user.Company}_${req.files.photo.name}`, req.files.photo.data, acl)
-    .then(file => {
-      res.redirect('/files');
-    })
-    .catch(error => {
-      res.status(401).render('error', {error: error});
-    })
+  .then(file => {
+    res.redirect('/files');
+  })
+  .catch(error => {
+    res.status(401).render('error', {error: error});
+  })
+});
+
+router.delete('/:fileName', (req, res, next) => {
+  ncmb.File.delete(req.params.fileName)
+  .then(file => {
+    res.redirect('/files');
+  })
+  .catch(error => {
+    res.status(401).render('error', {error: error});
+  })
 });
 
 module.exports = router;

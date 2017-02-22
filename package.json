@@ -14,6 +14,7 @@
     "express-fileupload": "^0.1.1",
     "express-session": "^1.15.1",
     "jade": "~1.11.0",
+    "method-override": "^2.3.7",
     "morgan": "~1.7.0",
     "ncmb": "^2.1.4",
     "serve-favicon": "~2.3.0"

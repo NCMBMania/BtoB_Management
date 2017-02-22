@@ -17,6 +17,8 @@ var configs = require('./routes/configs');
 var masters = require('./routes/masters');
 var files   = require('./routes/files');
 
+var methodOverride    = require('method-override');
+
 var app = express();
 
 app.use(session({
@@ -45,6 +47,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use( methodOverride( (req, res) => {
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    // look in urlencoded POST bodies and delete it
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));        
 
 app.use('/', routes);
 app.use('/users', users);
@@ -75,6 +86,7 @@ if (app.get('env') === 'development') {
     });
   });
 }
+
 
 // production error handler
 // no stacktraces leaked to user
