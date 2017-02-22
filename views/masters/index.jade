@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+  div#app
+    h1 マスター管理
+    p
+      button.btn.btn-default(v-on:click='add_item') 追加
+      &nbsp;
+      button.btn.btn-info(v-on:click='save') 保存
+    table.table
+      tr(v-for='(item,index) in items')
+        td
+        div.row
+          div.col-xs-8
+            input.form-control(type='text',v-model='items[index]')
+          div.col-xs-4
+            button.btn.btn-warning.btn-xs(v-on:click='delete_item(index)') 削除
