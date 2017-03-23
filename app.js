@@ -16,6 +16,7 @@ var sessions = require('./routes/sessions');
 var configs = require('./routes/configs');
 var masters = require('./routes/masters');
 var files   = require('./routes/files');
+var pushes  = require('./routes/pushes');
 
 var methodOverride    = require('method-override');
 
@@ -62,6 +63,7 @@ app.use('/users', users);
 app.use('/sessions', sessions);
 app.use('/configs', configs);
 app.use('/masters', masters);
+app.use('/pushes', pushes);
 
 app.use(fileUpload());
 app.use('/files',  files);

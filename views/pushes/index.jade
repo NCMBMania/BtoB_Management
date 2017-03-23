@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  h1 プッシュ通知作成
+  form(action='/pushes',method='post')
+    div.form-group
+      label タイトル
+      input.form-control(name='title')
+    div.form-group
+      label メッセージ
+      textarea.form-control(name='message')
+    div.form-group
+      label JSON
+      textarea.form-control(name='userSettingValue')
+    div.form-group
+      label URL
+      input.form-control(name='richUrl')
+    div.checkbox
+      label
+        input(type='checkbox',name='target',value='android')
+        | Android向けに配信&nbsp;
+      label
+        input(type='checkbox',name='target',value='ios')
+        | iOS向けに配信
+    button.btn.btn-default(type='submit') 登録
